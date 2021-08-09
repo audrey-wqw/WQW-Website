@@ -1,19 +1,18 @@
 import requests
-import dotenv
 import json
-
-config = dotenv.dotenv_values(".env")
+import config
 
 # Getting access token to authorize myself to the APIs
 url = "https://login.salesforce.com/services/oauth2/token"
 params = {
     "grant_type": "password",
-    "client_id": "3MVG9fe4g9fhX0E401_sCBrLBeN7dWzG_eEHh3jqRBYnHEPIeTMA9eKJb7qqPzrCdjpeVPMt0BBQHvU1OYg0l",
-    "client_secret": "C766CBD4698CBC0DF84F6AD8BFB675AECEFEAF31028D1D575A863757AE3E6C16",
-    "password": "Pin14102000",
-    "username": "daohainam1410@gmail.com"
+    "client_id": config.consumer_key,
+    "client_secret": config.consumer_secret,
+    "password": config.password,
+    "username": config.email
 }
 response = requests.post(url, params=params)
+print(response.content)
 access_token = response.json()['access_token']
 headers = {'Authorization': f"Bearer {access_token}"}
 
