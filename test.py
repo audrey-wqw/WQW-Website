@@ -78,6 +78,8 @@ data = {
     'Email__c': 'nhd36@drexel.edu 2'
 }
 
-update_object_record('Warriors__c', 'a035g000001X2kYAAS', data)
-delete_object_record('Warriors__c', 'a035g000001X2kYAAS')
+create_object_record('Warriors__c', data)
 print(query_object_record('select LastModifiedById, CreatedById, OwnerId, Name, Email__c from Warriors__c'))
+# update_object_record('Warriors__c', 'a035g000001X2kYAAS', data)
+# delete_object_record('Warriors__c', 'a035g000001X2kYAAS')
+# print(query_object_record('select LastModifiedById, CreatedById, OwnerId, Name, Email__c from Warriors__c'))
