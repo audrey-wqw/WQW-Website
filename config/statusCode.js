@@ -3,7 +3,9 @@ const statusCodes = {
     ok: 200,
     unauthorized: 401,
     bad_request: 400,
-    not_found: 404
+    not_found: 404,
+    conflict: 409,
+    internal_err: 500
 }
 
 module.exports = statusCodes;

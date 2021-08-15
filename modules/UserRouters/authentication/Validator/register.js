@@ -3,7 +3,6 @@ const helperFunc = require("../../../helperFunc");
 const registerLogic = require("../Logic/register");
 
 const registerValidator = (req, res) => {
-    console.log(req.authorizationHeaders)
     if (!req.authorizationHeaders) {
         return res.status(statusCode.service_not_available).json({
             message: "service unavailable",

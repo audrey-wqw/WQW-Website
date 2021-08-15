@@ -43,10 +43,33 @@ const insertData = (data, objectName, headers, next) => {
 
     axios.post(queryURL, { data }, { headers })
         .then(response => {
-            next(response);
+            if (response.status === 401) {
+                authorizedSO(response2 => {
+                    if (response2.status !== 200) {
+                        return next(new Error("service unavailable"), null);
+                    } else {
+                        const newHeaders = {
+                            Authorization: `Bearer ${response2.data.access_token}`
+                        }
+                        return retrieveData(query, newHeaders, next);
+                    }
+                });
+            } else {
+                return next(null, response);
+            }
         })
         .catch(error => {
-            next(error);
+            console.log(error.message);
+            authorizedSO(response2 => {
+                if (response2.status !== 200) {
+                    return next(new Error("service unavailable"), null);
+                } else {
+                    const newHeaders = {
+                        Authorization: `Bearer ${response2.data.access_token}`
+                    }
+                    return retrieveData(query, newHeaders, next);
+                }
+            });
         })
 }
 

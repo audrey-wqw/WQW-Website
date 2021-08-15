@@ -1,5 +1,5 @@
 const statusCodes = require("../../../../config/statusCode");
-const { retrieveData } = require("../../../SOInteraction");
+const { retrieveData, insertData } = require("../../../SOInteraction");
 
 const registerLogic = (data, res) => {
     const query = `select Email__c from Participant__c where Email__c = '${data.email}'`;
@@ -15,7 +15,12 @@ const registerLogic = (data, res) => {
                 status: false
             });
         }
-
+        if (response.data.totalSize > 0) {
+            return res.status(statusCodes.conflict).json({
+                message: "user email existed",
+                status: false
+            });
+        }
         return res.status(statusCodes.ok).json({
             message: "register successfully",
             data: response.data
