@@ -1,3 +1,6 @@
+const bcrypt = require("bcrypt");
+const CONFIG = require("../config/config");
+
 /**
  * Email Regex
  */
@@ -43,7 +46,7 @@ const hashingPassword = (plainPwd, next) => {
  * Generate JWT Token
  */
 const generateJWT = (minutes, data, next) => {
-    jwt.sign(data, config.secretKey, { expiresIn: minutes * 60 }, (err, token) => {
+    jwt.sign(data, CONFIG.jwt_secret, { expiresIn: minutes * 60 }, (err, token) => {
         next(err, token);
     })
 }
