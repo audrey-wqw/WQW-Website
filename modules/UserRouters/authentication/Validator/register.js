@@ -3,13 +3,6 @@ const helperFunc = require("../../../helperFunc");
 const registerLogic = require("../Logic/register");
 
 const registerValidator = (req, res) => {
-    if (!req.authorizationHeaders) {
-        return res.status(statusCode.service_not_available).json({
-            message: "service unavailable",
-            status: false
-        });
-    }
-
     if (!req.body?.firstName) {
         return res.status(statusCode.bad_request).json({
             message: "Lack Key: firstName",
