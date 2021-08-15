@@ -1,4 +1,8 @@
 venv/
 __pycache__/
-.env
+*/.env
 mydata.env
+package-lock.json
+node_modules/
+package-lock.json
+test.js
