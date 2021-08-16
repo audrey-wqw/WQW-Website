@@ -1,0 +1,63 @@
+import Header from '../components/header';
+import NavBarWeb from '../components/navbar-web';
+
+const SchedulePage = () => {
+  const fxOptions = 
+  [
+    { page: 'Schedule of Events', url: '/fx/schedule'},
+    { page: 'Pre-FX Checklist', url: '/fx/checklist'},
+    { page: 'What to Pack', url: '/fx/what-to-pack'},
+    { page: 'Photos', url: '/fx/photos'},
+  ]
+
+  const schedule =
+  [
+    { 
+      date: 'Tuesday, July 6',
+      dayEvent: 'FLY FISHING 101',
+      dateItems: [
+        {time: '7:30 AM', event: 'Breakfast', eventDetails: 'Have caregivers prepared for fishing by 8:15 AM'},
+        {time: '9:30 AM', event: 'Fly Fishing Instruction 101 at QWR', eventDetails: 'Location: QWR'},
+        {time: '12:00 PM', event: 'Guided Fly Fishing', eventDetails: 'Greycliff ponds, be back at QWR by 5:30 PM'}
+      ]
+    },
+    { 
+      date: 'Tuesday, July 6',
+      dayEvent: 'FLY FISHING 101',
+      dateItems: [
+        {time: '7:30 AM', event: 'Breakfast', eventDetails: 'Have caregivers prepared for fishing by 8:15 AM'}
+      ]
+    },
+
+  ]
+  return (
+    <div>
+      <Header title="Schedule of Events" />
+      <div className="schedule-page">
+        <NavBarWeb options={fxOptions} />
+          <div className="schedule-container">
+            {schedule.map((item) => 
+              <div className="schedule-item">
+                <div className="schedule-item-heading">
+                  <h1 style={{fontSize: "25px"}}>{item.date}</h1>
+                  <h3 style={{fontSize: "25px", fontFamily: 'Open Sans Light', letterSpacing: '10%'}}>{item.dayEvent}</h3>
+                </div>
+                { item.dateItems.map((singleEvent) => 
+                  <div className="schedule-item-event">
+                    <p style={{fontSize: "20px", color: "#66635E", width: '15%'}}>{singleEvent.time}</p>
+                    <div className="schedule-item-details">
+                      <p style={{fontFamily: 'Open Sans Bold', fontSize: "20px", color: "#66635E"}}>{singleEvent.event}</p>
+                      <p style={{fontSize: '16px'}}>{singleEvent.eventDetails}</p>
+                    </div>
+                    <hr style={{width: '100%', marginTop: '1%', borderWidth: '0.10px'}}/>
+                  </div>
+                )}
+            </div>
+            )}
+          </div>
+      </div>
+    </div>
+  );
+}
+
+export default SchedulePage;

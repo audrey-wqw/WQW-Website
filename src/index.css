@@ -1,0 +1,271 @@
+/* THEME: 
+CREAM: #F4F2ED
+PURPLE: #542D88
+DARK: #26231F
+TAN: #D0C6B5
+GOLD: #E4B53A
+DARK GRAY: #66635E
+*/
+
+@font-face {
+  font-family: 'Open Sans Bold';
+  src: url(./assets/fonts/OpenSans-Bold.ttf);
+  font-weight: 800
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url(./assets/fonts/OpenSans-Regular.ttf);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Open Sans Light';
+  src: url(./assets/fonts/OpenSans-Light.ttf);
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: 'Open Sans SemiBold';
+  src: url(./assets/fonts/OpenSans-SemiBold.ttf);
+  font-weight: 600;
+}
+
+
+body {
+  margin: 0;
+  background-color: #F4F2ED;
+  overflow-x: hidden;
+}
+
+hr {
+  border: 0.5px solid #D0C6B5;
+  /* width: 100%; */
+}
+
+h1 {
+  font-family: 'Open Sans Bold';
+  margin: 0px;
+}
+
+h3 {
+  font-family: 'Open Sans SemiBold';
+  color: #66635E;
+  margin: 0px;
+}
+
+p {
+  font-family: 'Open Sans';
+  font-size: 13px;
+  margin: 0px;
+}
+
+.top-text {
+  margin-bottom: 30px;
+  display: flex;
+  /* flex-wrap: wrap;
+  flex-direction: column; */
+  flex-flow: column wrap;
+  
+}
+.create-acct-link {
+  text-decoration: none;
+  font-family: 'Open Sans Bold';
+  color: #542D88;
+  font-size: 13px;
+}
+
+.login-page {
+  display: flex;
+  flex-direction: row;
+}
+
+.login-logo {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  max-width: 40%;
+  padding: 10%;
+}
+
+.login-web {
+  max-width: 60%;
+  font-family: 'Open Sans';
+  margin-top: 10%;
+  justify-content: center;
+}
+
+.login-mobile {
+  display: none;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Open Sans';
+}
+
+.btn {
+  color: white;
+  background-color: #542D88;
+  width: 80%;
+  border: none;
+  border-radius: 5px;
+  align-self: center;
+  justify-self: center;
+  padding: 3%;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0px 5px 20px #717274;
+}
+
+.login-form-label {
+  font-family: 'Open Sans Light';
+  font-size: 13px;
+  color: #66635E;
+}
+
+input {
+  border: none;
+  border: 1px solid #D0C6B5;
+  border-radius: 5px;
+  padding: 10px;
+  font-family: 'Open Sans';
+  font-size: 12px;
+}
+
+.socials {
+  display: flex;
+  margin: 15px;
+  align-items: center;
+  justify-content: center
+}
+
+.social-icon {
+  margin-left: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  h2 {
+    color: #66635E;
+    font-family: 'Open Sans Bold';
+  }
+  .login-web, .login-logo {
+    display: none;
+  }
+  .login-mobile {
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-width: 100%;
+  }
+  .login-form-label-mobile {
+    font-family: 'Open Sans Light';
+    font-size: 13px;
+    color: #66635E;
+  }
+  .input-mobile {
+    width: 80%;
+    align-self: center;
+  }
+  .login-form-mobile {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Open Sans';
+    position: absolute;
+    bottom: 10%;
+    width: 90%;
+  }
+  .btn {
+    width: 40%;
+    border-radius: 35px;
+  }
+  .mobile-form-elt {
+    align-self: center;
+  }
+  .navbar-web {
+    display: none;
+  }
+}
+
+.header {
+  background-color: #D0C6B5;
+  width: 100vw;
+  text-align: center;
+  padding: 2%;
+}
+
+.navbar-web {
+  background-color: #66635E;
+  color: #F4F2ED;
+  width: 13vw;
+  height: 100vh;
+  z-index: -1;
+  padding: 1%;
+  float: left;
+}
+
+ul {
+  font-family: 'Open Sans';
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+li {
+  font-family: 'Open Sans Light';
+  text-decoration: none;
+  color: #F4F2ED;
+  margin: 0px;
+  padding-left: 3%;
+  padding-top: 3%;
+
+}
+
+.link {
+  text-decoration: none;
+  color: #F4F2ED;
+  font-family: 'Open Sans Light';
+}
+
+.link:hover {
+  font-family: 'Open Sans SemiBold';
+}
+
+.collapse {
+  color: none;
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+
+.schedule-container {
+  padding: 10px;
+  width: 100vw - 13vw;
+  
+}
+
+.schedule-item {
+  float: right;
+  width: 80vw;
+  padding: 10px;
+}
+
+.schedule-item-heading {
+  display: flex;
+  justify-content: space-between;
+  padding: 1%;
+}
+
+.schedule-item-event {
+  display: flex;
+  margin-bottom: 2%;
+  flex-wrap: wrap;
+}
+
+.schedule-item-details {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+}
