@@ -21,6 +21,8 @@ const createEvent = require("./modules/EventRouters/Validator/createEvent");
 const eventInfo = require("./modules/EventRouters/Validator/eventInfo");
 
 const createSchedule = require("./modules/ScheduleRouters/Validator/createSchedule");
+const schedulesInfo = require("./modules/ScheduleRouters/Validator/schedulesInfo");
+const scheduleInfo = require("./modules/ScheduleRouters/Validator/scheduleInfo");
 
 // Server Setup
 const app = express();
@@ -32,7 +34,7 @@ app.use(morgan('- Method: :method || Endpoint: :url || StatusCode: :status || Re
 app.use(passport.initialize());
 
 createSfConn((err, sfConn) => {
-    if(err) {
+    if (err) {
         console.log("Connection to Saleforce fails!");
         return;
     }
@@ -46,12 +48,14 @@ createSfConn((err, sfConn) => {
     app.put("/user/auth/submit-verify-code", submitVerifyCode(sfConn));
 
     // Event endpoints
-    app.get("/events", passport.authenticate("jwt", {session: false}), eventsInfo(sfConn));
-    app.post("/events", passport.authenticate("jwt", {session: false}), authAdminOnly, createEvent(sfConn));
-    app.get("/events/:eventId", eventInfo(sfConn));
+    app.post("/events", passport.authenticate("jwt", { session: false }), authAdminOnly, createEvent(sfConn));
+    app.get("/events", passport.authenticate("jwt", { session: false }), eventsInfo(sfConn));
+    app.get("/events/:eventId", passport.authenticate("jwt", { session: false }), eventInfo(sfConn));
 
     // Schedule endpoints
-    app.post("/events/:eventId/schedules", passport.authenticate("jwt", {session: false}), authAdminOnly, createSchedule(sfConn));
+    app.post("/events/:eventId/schedules", passport.authenticate("jwt", { session: false }), authAdminOnly, createSchedule(sfConn));
+    app.get("/events/:eventId/schedules", passport.authenticate("jwt", { session: false }), schedulesInfo);
+    app.get("/events/:eventId/schedules/:scheduleId", passport.authenticate("jwt", { session: false }), scheduleInfo);
 
     // Start Server
     app.listen(CONFIG.app_port, CONFIG.app_host, async () => {

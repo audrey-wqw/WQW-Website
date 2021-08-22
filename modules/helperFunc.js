@@ -31,6 +31,11 @@ const validateDate = (dateString) => {
     return regexDate.test(String(dateString));
 }
 
+const validateTime = (timeString) => {
+    const regexTime = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
+    return regexTime.test(String(timeString));
+}
+
 /**
  * Hashing password
  */
@@ -123,5 +128,5 @@ const checkRole = (role) => {
 
 module.exports = { 
     validateEmail, validatePassword, hashingPassword, generateJWT, compareHashed, sendVerifyCode, 
-    generateCode, getTime, checkRole, validateDate
+    generateCode, getTime, checkRole, validateDate, validateTime
 };
