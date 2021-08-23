@@ -54,8 +54,8 @@ createSfConn((err, sfConn) => {
 
     // Schedule endpoints
     app.post("/events/:eventId/schedules", passport.authenticate("jwt", { session: false }), authAdminOnly, createSchedule(sfConn));
-    app.get("/events/:eventId/schedules", passport.authenticate("jwt", { session: false }), schedulesInfo);
-    app.get("/events/:eventId/schedules/:scheduleId", passport.authenticate("jwt", { session: false }), scheduleInfo);
+    app.get("/events/:eventId/schedules", passport.authenticate("jwt", { session: false }), schedulesInfo(sfConn));
+    app.get("/events/:eventId/schedules/:scheduleId", passport.authenticate("jwt", { session: false }), scheduleInfo(sfConn));
 
     // Start Server
     app.listen(CONFIG.app_port, CONFIG.app_host, async () => {
