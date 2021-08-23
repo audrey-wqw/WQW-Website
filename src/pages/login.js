@@ -17,7 +17,7 @@ const LoginPage = () => {
             <p>Not yet registered with Warriors and Quiet Waters?</p> 
             <Link className='create-acct-link' to='/signup'>Create Account</Link>
             {/* TODO: REMOVE ONCE LOGIN LOGIC IS READY */}
-            <Link className='create-acct-link' to='/fx/schedule'>BYPASS</Link>
+            <Link className='create-acct-link' to='/dashboard'>BYPASS</Link>
           </div>
           <hr />
           <h3>For returning members</h3>

@@ -48,6 +48,10 @@ h1 {
   margin: 0px;
 }
 
+h2 {
+  font-family: 'Open Sans Bold';
+}
+
 h3 {
   font-family: 'Open Sans SemiBold';
   color: #66635E;
@@ -229,6 +233,17 @@ li {
   font-family: 'Open Sans Light';
 }
 
+.link-2 {
+  text-decoration: none;
+  font-family: 'Open Sans';
+  color: black;
+  padding: 1%;
+}
+
+.link-2:hover {
+  font-family: 'Open Sans SemiBold';
+}
+
 .link:hover {
   font-family: 'Open Sans SemiBold';
 }
@@ -268,4 +283,128 @@ li {
   display: flex;
   flex-direction: column;
   width: 85%;
+}
+
+.navbar-web-2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-web-2-pages {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 2%;
+  padding: 1%;
+  flex-wrap: none;
+  width: 100%;
+}
+
+.navbar-web-2-logo {
+  width: 40%;
+  padding: 3%;
+}
+
+.checklist-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.checklist-form-container {
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+}
+
+.checkbox-container {
+  display: block;
+  position: relative;
+  font-family: 'Open Sans';
+  padding-left: 35px;
+  margin-bottom: 4%;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+ 
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: none;
+  border: 1px solid #E4B53A;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+  border: 2px solid #E4B53A;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+ 
+.checkbox-container .checkmark:after {
+  left: 6px;
+  top: 1px;
+  width: 6px;
+  height: 10px;
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.pack-link { 
+  text-decoration: none;
+  font-family: 'Open Sans Bold';
+  color: #542D88;
+}
+
+.pack-link:hover {
+  text-decoration: underline;
+}
+
+.packing-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.items-list {
+  list-style-type: disc;
+}
+
+.item::marker {
+  color: #E4B53A;
+  font-size: 36px;
+  vertical-align: middle;
+}
+
+.item {
+  padding: 0;
+  vertical-align: middle;
+}
+
+.dashboard-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
