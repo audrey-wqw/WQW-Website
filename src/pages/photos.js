@@ -1,19 +1,15 @@
-// import NavBarWeb from '../components/navbar-web';
-import * as F from "@fortawesome/free-solid-svg-icons";
 import NavBarWeb2 from '../components/navbar-web-2';
+import * as F from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
-const dashboardPage = () => {
-  const dashboardTextStyle = {
-    fontSize: '45px',
-    textAlign: 'center',
-  }
-
+const PhotosPage = () => {
   const fxOptions = 
   [
     { page: 'Schedule of Events', url: '/fx/schedule', icon: F.faCalendar},
-    { page: 'Pre-FX Checklist', url: '/fx/checklist', icon: F.faCheck},
+    { page: 'FX Materials', url: '/fx/materials', icon: F.faCheck},
     { page: 'What to Pack', url: '/fx/what-to-pack', icon: F.faSuitcase},
     { page: 'Photos', url: '/fx/photos', icon: F.faCamera},
+    { page: 'Volunteer Chat', url: '/chat', icon: F.faComment},
   ]
 
   const otherPages =
@@ -24,14 +20,15 @@ const dashboardPage = () => {
   ]
 
   return (
-    <div>
-      {/* <NavBarWeb fx={true} options={fxOptions} otherPages={otherPages}/> */}
+    <div className="photo-container">
       <NavBarWeb2 dd={'Fishing Experience'} options={fxOptions} pages={otherPages} />
-      <div className="dashboard-content">
-        <h1 style={dashboardTextStyle}><span style={{fontFamily: 'Open Sans'}}>Welcome</span> NAME</h1>
+      <div className="photo-page">
+        <h1 style={{color: '#66635E' }}>PHOTOS</h1>
+        <Link className="photo-link" to='/'>SGT MAC'S PHOTOS</Link>
+        <Link className="photo-link" to='/'>PERSONAL PHOTO SHARE</Link>
       </div>
     </div>
   );
 }
 
-export default dashboardPage;
+export default PhotosPage;

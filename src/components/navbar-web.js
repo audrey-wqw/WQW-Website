@@ -16,7 +16,7 @@ const NavBarWeb = (props) => {
         </button>
         {isOpen ? (props.options.map((item) => 
           <li>
-            {console.log(item.icon)}
+            {/* {console.log(item.icon)} */}
             <FontAwesomeIcon style={{padding: '1.5%'}} icon={item.icon} color="#F4F2ED"/>
             <Link className="link" to={item.url} style={{fontSize: '14px'}}>
               {item.page}
@@ -25,7 +25,7 @@ const NavBarWeb = (props) => {
       </ul>
       }
       {props.otherPages.map((page) => 
-        <div>
+        <div style={{marginBottom: '6px'}}>
           <Link className="link" to={page.url} style={{fontFamily: 'Open Sans'}}>{page.name}</Link>
           <br />
         </div>

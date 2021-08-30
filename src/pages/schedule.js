@@ -1,5 +1,6 @@
 import Header from '../components/header';
-import NavBarWeb from '../components/navbar-web';
+// import NavBarWeb from '../components/navbar-web';
+import NavBarWeb2 from '../components/navbar-web-2';
 import * as F from "@fortawesome/free-solid-svg-icons";
 
 const SchedulePage = () => {
@@ -41,10 +42,13 @@ const SchedulePage = () => {
 
   return (
     <div>
-      <Header title="Schedule of Events" />
+      {/* <Header title="Schedule of Events" /> */}
       <div className="schedule-page">
-        <NavBarWeb fx={true} options={fxOptions} otherPages={otherPages} />
+        {/* <NavBarWeb fx={true} options={fxOptions} otherPages={otherPages} /> */}
+        <NavBarWeb2 dd={'Fishing Experience'} options={fxOptions} pages={otherPages} />
           <div className="schedule-container">
+          <h1 style={{color: '#66635E' }}>SCHEDULE OF EVENTS</h1>
+          <h2 style={{fontSize: '20px', margin: 0}}>Here's what the next few days look like ...</h2>
             {schedule.map((item) => 
               <div className="schedule-item">
                 <div className="schedule-item-heading">

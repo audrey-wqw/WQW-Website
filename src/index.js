@@ -17,6 +17,7 @@ import SchedulePage from './pages/schedule';
 import PreFxChecklistPage from './pages/preFxChecklist';
 import DashboardPage from './pages/dashboard';
 import WhatToPackPage from './pages/whatToPack';
+import PhotosPage from './pages/photos';
 
 
 export class Login extends React.Component {
@@ -109,6 +110,21 @@ export class WhatToPack extends React.Component {
   }
 }
 
+export class Photos extends React.Component {
+  componentDidMount() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
+
+  render() {
+    return (
+      <div>
+        <PhotosPage />
+      </div>
+    )
+  }
+}
+
 ReactDOM.render(
   <React.StrictMode>
     <Router>
@@ -121,6 +137,7 @@ ReactDOM.render(
         <Route exact path="/fx/checklist" component={PreFxChecklistPage}></Route>
         <Route exact path="/fx/what-to-pack" component={WhatToPackPage}></Route>
         <Route exact path="/dashboard" component={DashboardPage}></Route>
+        <Route exact path="/fx/photos" component={PhotosPage}></Route>
         {/* TODO: MAKE AN ERROR PAGE <Route component={ErrorPage}></Route>  */}
       </Switch>
 
