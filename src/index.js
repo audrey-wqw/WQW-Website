@@ -8,7 +8,9 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
+
 
 // import page components
 import LoginPage from './pages/login';
@@ -18,6 +20,8 @@ import PreFxChecklistPage from './pages/preFxChecklist';
 import DashboardPage from './pages/dashboard';
 import WhatToPackPage from './pages/whatToPack';
 import PhotosPage from './pages/photos';
+import FaqPage from './pages/faq';
+import ErrorPage from './pages/error';
 
 
 export class Login extends React.Component {
@@ -125,6 +129,36 @@ export class Photos extends React.Component {
   }
 }
 
+export class Faq extends React.Component {
+  componentDidMount() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
+
+  render() {
+    return (
+      <div>
+        <FaqPage />
+      </div>
+    )
+  }
+}
+
+export class Error extends React.Component {
+  componentDidMount() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
+
+  render() {
+    return (
+      <div>
+        <ErrorPage />
+      </div>
+    )
+  }
+}
+
 ReactDOM.render(
   <React.StrictMode>
     <Router>
@@ -138,7 +172,8 @@ ReactDOM.render(
         <Route exact path="/fx/what-to-pack" component={WhatToPackPage}></Route>
         <Route exact path="/dashboard" component={DashboardPage}></Route>
         <Route exact path="/fx/photos" component={PhotosPage}></Route>
-        {/* TODO: MAKE AN ERROR PAGE <Route component={ErrorPage}></Route>  */}
+        <Route exact path="/faq" component={FaqPage}></Route>
+        <Route component={ErrorPage}></Route> 
       </Switch>
 
       {/* <Footer /> */}

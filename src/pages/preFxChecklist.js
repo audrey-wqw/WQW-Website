@@ -1,6 +1,7 @@
 import NavBarWeb2 from '../components/navbar-web-2';
 import { Link } from "react-router-dom";
 import React, { useState } from 'react';
+import * as F from "@fortawesome/free-solid-svg-icons";
  
 class PreFxChecklistPage extends React.Component {
   constructor(props) {
@@ -25,16 +26,33 @@ class PreFxChecklistPage extends React.Component {
   }
 
   render(){
-    const pages = [
-      { name: 'Schedule of Events', url: '/fx/schedule' },
-      { name: 'Pre-FX Checklist', url: '/fx/checklist' },
-      { name: 'What to Pack', url: '/fx/what-to-pack' },
-      { name: 'Photos', url: '/fx/photos' },
+    // const pages = [
+    //   { name: 'Schedule of Events', url: '/fx/schedule' },
+    //   { name: 'Pre-FX Checklist', url: '/fx/checklist' },
+    //   { name: 'What to Pack', url: '/fx/what-to-pack' },
+    //   { name: 'Photos', url: '/fx/photos' },
+    // ]
+
+    const otherPages =
+    [
+      { name: 'WQW Connection', url: '/wqw-connection' },
+      { name: 'Participant Resources', url: '/resources' },
+      { name: 'FAQs', url: '/faq'}
+    ]
+
+    const fxOptions = 
+    [
+      { page: 'Schedule of Events', url: '/fx/schedule', icon: F.faCalendar},
+      { page: 'FX Materials', url: '/fx/materials', icon: F.faCheck},
+      { page: 'What to Pack', url: '/fx/what-to-pack', icon: F.faSuitcase},
+      { page: 'Photos', url: '/fx/photos', icon: F.faCamera},
+      { page: 'Volunteer Chat', url: '/chat', icon: F.faComment},
     ]
 
     return (
       <div>
-        <NavBarWeb2 pages={pages} />
+        {/* <NavBarWeb2 pages={pages} /> */}
+        <NavBarWeb2 dd={'Fishing Experience'} options={fxOptions} pages={otherPages} />
         <div className="checklist-wrapper" style={{display: ((this.allChecked && this.submitted) ? 'none' : '') }}>
           <h1 style={{color: '#66635E' }}>PRE-FX CHECKLIST</h1>
           <h2 style={{fontSize: '20px', margin: 0}}>Are you ready for your upcoming FX?</h2>
