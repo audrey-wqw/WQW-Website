@@ -26,7 +26,7 @@ const registerLogic = (data, res, sfConn) => {
                     Last_Name__c: data.lastName,
                     password__c: hashPwd,
                     isVerified__c: false,
-                    role__c: data.role
+                    role__c: helperFunc.checkRole("participant")
                 }
                 objectConn.create(insertData, (err, result) => {
                     if(err || !result.success) {

@@ -9,12 +9,12 @@ const loginLogic = (data, res, sfConn) => {
         Id: 1,
         email__c: 1,
         password__c: 1,
+        role__c: 1
     }
 
     const conditions = {
         email__c: data.email,
         isVerified__c: true,
-        role__c: data.role
     }
     objectConn.find(conditions, filterData).limit(1).execute((err, records) => {
         if (!records || records.length == 0) {
@@ -45,7 +45,7 @@ const loginLogic = (data, res, sfConn) => {
             const payload = {
                 email: user.email__c,
                 id: user.Id,
-                role: CONFIG.roles[data.role]
+                role: CONFIG.roles[user.role__c]
             }
 
             helperFunc.generateJWT(60 * 24 * 7, payload, (err, token) => {
@@ -61,7 +61,8 @@ const loginLogic = (data, res, sfConn) => {
                 return res.status(statusCodes.ok).json({
                     message: "login successfully",
                     data: {
-                        token: authToken
+                        token: authToken,
+                        role: CONFIG.roles[user.role__c]
                     },
                     status: true
                 });

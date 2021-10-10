@@ -47,23 +47,11 @@ const registerValidator = (sfConn) => {
             });
         }
 
-        const userRole = req.params.userRole;
-
-        let indexRole = helperFunc.checkRole(userRole);
-
-        if (indexRole === -1) {
-            return res.status(statusCodes.bad_request).json({
-                message: "invalid user role",
-                status: false
-            });
-        }
-
         let data = {
             firstName: String(req.body.firstName),
             lastName: String(req.body.lastName),
             email: String(req.body.email),
-            password: String(req.body.password),
-            role: indexRole
+            password: String(req.body.password)
         }
         return registerLogic(data, res, sfConn);
     }
