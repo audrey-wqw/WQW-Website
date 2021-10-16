@@ -8,8 +8,9 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
+import { Provider } from 'react-redux'
 
 
 // import page components
@@ -23,6 +24,23 @@ import PhotosPage from './pages/photos';
 import FaqPage from './pages/faq';
 import ErrorPage from './pages/error';
 
+import { logout } from "./actions/auth";
+import { clearMessage } from "./actions/message";
+import { history } from './utils/history';
+
+
+import { createStore, applyMiddleware } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+import thunk from "redux-thunk";
+import rootReducer from "./reducers";
+
+const middleware = [thunk];
+
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(...middleware))
+);
+
 
 export class Login extends React.Component {
   componentDidMount() {
@@ -32,9 +50,12 @@ export class Login extends React.Component {
 
   render() {
     return (
-      <div>
-        <LoginPage />
-      </div>
+      
+        <div> 
+          <LoginPage />
+        </div>
+
+      
     )
   }
 }
@@ -161,23 +182,25 @@ export class Error extends React.Component {
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      {/* <Navigation /> */}
+    <Provider store={store}>
+      <Router>
+        {/* <Navigation /> */}
 
-      <Switch>
-        <Route exact path="/" component={LoginPage}></Route>
-        <Route exact path="/signup" component={SignUpPage}></Route>
-        <Route exact path="/fx/schedule" component={SchedulePage}></Route>
-        <Route exact path="/fx/checklist" component={PreFxChecklistPage}></Route>
-        <Route exact path="/fx/what-to-pack" component={WhatToPackPage}></Route>
-        <Route exact path="/dashboard" component={DashboardPage}></Route>
-        <Route exact path="/fx/photos" component={PhotosPage}></Route>
-        <Route exact path="/faq" component={FaqPage}></Route>
-        <Route component={ErrorPage}></Route> 
-      </Switch>
+        <Switch>
+          <Route exact path="/" component={LoginPage}></Route>
+          <Route exact path="/signup" component={SignUpPage}></Route>
+          <Route exact path="/fx/schedule" component={SchedulePage}></Route>
+          <Route exact path="/fx/checklist" component={PreFxChecklistPage}></Route>
+          <Route exact path="/fx/what-to-pack" component={WhatToPackPage}></Route>
+          <Route exact path="/dashboard" component={DashboardPage}></Route>
+          <Route exact path="/fx/photos" component={PhotosPage}></Route>
+          <Route exact path="/faq" component={FaqPage}></Route>
+          <Route component={ErrorPage}></Route> 
+        </Switch>
 
-      {/* <Footer /> */}
-    </Router>
+        {/* <Footer /> */}
+      </Router>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
